@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
+    "start:vite": "vite",
+    "start:express": "PORT=3001 node server/index.js",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.3",
+    "express": "^4.19.2",
     "normalize.css": "^8.0.1",
     "pinia": "^2.2.0",
     "vue": "^3.4.31"
@@ -17,6 +20,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
     "eslint": "^9.8.0",
     "eslint-plugin-vue": "^9.27.0",
     "postcss": "^8.4.40",

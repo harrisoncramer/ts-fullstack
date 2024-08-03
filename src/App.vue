@@ -1,6 +1,6 @@
 <template>
   <Loading
-    :is-loading="!ready"
+    :loading="!ready"
     :error="error"
   >
     <SomeComponent message="cool" />
@@ -9,8 +9,8 @@
 
 <script setup lang="ts">
 import { useUsersStore } from '@/stores'
-import SomeComponent from './components/SomeComponent.vue'
-import Loading from './components/Loading.vue'
+import SomeComponent from '@/components/SomeComponent.vue'
+import Loading from '@/components/Loading.vue'
 import { storeToRefs } from 'pinia'
 const usersStore = useUsersStore()
 

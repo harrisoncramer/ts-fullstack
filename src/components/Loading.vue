@@ -1,6 +1,6 @@
 <template>
   <div v-if="error && !loading">
-    Error!
+    {{ error }}
   </div>
   <div v-if="loading">
     Loading...

@@ -1,5 +1,5 @@
 export default {
   users: {
-    list: '/v0.1/users'
+    list: '/api/v1/users'
   }
 }
