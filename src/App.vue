@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { useUsersStore } from '@/stores'
 import SomeComponent from './components/SomeComponent.vue'
+import Loading from './components/Loading.vue'
 import { storeToRefs } from 'pinia'
 const usersStore = useUsersStore()
 
