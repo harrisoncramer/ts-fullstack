@@ -1,5 +1,8 @@
 <template>
-  <Loading :is-loading="!ready">
+  <Loading
+    :is-loading="!ready"
+    :error="error"
+  >
     <SomeComponent message="cool" />
   </Loading>
 </template>
