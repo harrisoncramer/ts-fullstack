@@ -4,7 +4,7 @@ import axios from 'axios'
 import { init } from "./utils"
 import urls from "../urls";
 
-type User = {
+export type User = {
   first_name: string,
   last_name: string,
 }

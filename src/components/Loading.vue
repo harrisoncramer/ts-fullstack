@@ -1,12 +1,17 @@
 <template>
-  <div v-if="error && !loading">
-    {{ error }}
-  </div>
-  <div v-if="loading">
-    Loading...
-  </div>
-  <div v-else>
-    <slot />
+  <div class="c-loading">
+    <div
+      v-if="error && !loading"
+      class="text-red-400"
+    >
+      {{ error }}
+    </div>
+    <div v-else-if="loading">
+      Loading...
+    </div>
+    <div v-else>
+      <slot />
+    </div>
   </div>
 </template>
 
