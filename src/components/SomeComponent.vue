@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {
   message: 'Some default message',
 })
 </script>
-<style lang="postcss" scoped>
+<style lang="pcss" scoped>
 p {
   @apply text-red-200;
 }

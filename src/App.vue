@@ -16,6 +16,3 @@ const usersStore = useUsersStore()
 
 const { ready, error } = storeToRefs(usersStore)
 </script>
-<style scoped>
-@apply text-black;
-</style>

@@ -1,4 +1,7 @@
 <template>
+  <div v-if="error && !loading">
+    Error!
+  </div>
   <div v-if="loading">
     Loading...
   </div>
@@ -13,7 +16,7 @@ type Props = {
   error?: any | null,
 }
 
-withDefaults(defineProps<Props>, {
+withDefaults(defineProps<Props>(), {
   loading: false,
   error: null,
 })
