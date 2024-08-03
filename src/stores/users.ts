@@ -13,7 +13,6 @@ export const useUsersStore = defineStore('Users', () => {
   const users = ref<User[]>([])
 
   const { error, ready, readySync, refresh } = init(async () => { 
-    console.log("hi");
     const { data } = await axios.get(urls.users.list)
     users.value = data
   })
