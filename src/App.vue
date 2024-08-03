@@ -1,7 +1,17 @@
-<script setup lang="ts">
-import SomeComponent from './components/SomeComponent.vue'
-</script>
-
 <template>
-  <SomeComponent message="Your template is running!" />
+  <Loading :is-loading="!ready">
+    <SomeComponent message="cool" />
+  </Loading>
 </template>
+
+<script setup lang="ts">
+import { useUsersStore } from '@/stores'
+import SomeComponent from './components/SomeComponent.vue'
+import { storeToRefs } from 'pinia'
+const usersStore = useUsersStore()
+
+const { ready, error } = storeToRefs(usersStore)
+</script>
+<style scoped>
+@apply text-black;
+</style>
