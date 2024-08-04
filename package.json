@@ -7,7 +7,7 @@
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
     "start:express": "PORT=3001 tsx --watch server/index.ts",
-    "gen-openapi-client": "openapi-ts",
+    "build:api": "openapi-ts",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
