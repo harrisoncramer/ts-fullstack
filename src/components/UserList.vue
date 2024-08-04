@@ -9,10 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { User } from '@/stores/users'
-
+import { GetApiV1UsersResponse } from "@/client";
 type Props = {
-  users: User[]
+  users: GetApiV1UsersResponse,
 }
 
 withDefaults(defineProps<Props>(), {

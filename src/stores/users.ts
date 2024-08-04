@@ -1,19 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import axios from 'axios'
 import { init } from "./utils"
-import urls from "../urls";
-
-export type User = {
-  first_name: string,
-  last_name: string,
-}
+import { getApiV1Users, GetApiV1UsersResponse } from "@/client";
 
 export const useUsersStore = defineStore('Users', () => {
-  const users = ref<User[]>([])
+  const users = ref<GetApiV1UsersResponse>([])
 
   const { error, ready, readySync, refresh } = init(async () => { 
-    const { data } = await axios.get(urls.users.list)
+    const { data } = await getApiV1Users()
     users.value = data
   })
 

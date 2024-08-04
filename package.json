@@ -7,18 +7,22 @@
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
     "start:express": "PORT=3001 tsx --watch server/index.ts",
+    "gen-openapi-client": "openapi-ts",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hey-api/client-axios": "^0.2.0",
     "axios": "^1.7.3",
     "express": "^4.19.2",
+    "express-openapi-validator": "^5.2.0",
     "normalize.css": "^8.0.1",
     "pinia": "^2.2.0",
     "vue": "^3.4.31",
     "vue-router": "^4.4.2"
   },
   "devDependencies": {
+    "@hey-api/openapi-ts": "^0.52.0",
     "@types/express": "^4.17.21",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.20",

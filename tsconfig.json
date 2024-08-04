@@ -19,12 +19,14 @@
     "useDefineForClassFields": true,
     "paths": {
       "@/*": ["./src/*"],
+      "api": ["./api/*"],
       "@test/*": ["./test/*"]
     }
   },
   "include": [
     "vite.config.ts",
     "./src/**/*",
+    "./api/**/*",
     "./test/**/*",
     "./server/**/*",
     "eslint.config.js"  
