@@ -4,8 +4,7 @@ import vue from '@vitejs/plugin-vue'
 
 const __dirname = import.meta.dirname
 
-const SRC = path.join(__dirname, 'src')
-const API = path.join(__dirname, 'api')
+const CLIENT = path.join(__dirname, 'client')
 
 export default defineConfig({
   server: {
@@ -22,8 +21,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@api': API,
-      '@': SRC,
+      '@': CLIENT,
     }
   }
 })

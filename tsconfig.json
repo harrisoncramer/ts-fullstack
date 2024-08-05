@@ -1,7 +1,7 @@
 {
 "references": [
     {
-      "path": "./src"
+      "path": "./client"
     }, 
     {
       "path": "./server"
@@ -12,7 +12,6 @@
     "target": "ESNext",
     "module": "esnext",
     "rootDir": ".",
-    "baseUrl": ".",
     "strict": true,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
@@ -25,15 +24,11 @@
     "allowImportingTsExtensions": true,
     "noUncheckedIndexedAccess": true,
     "useDefineForClassFields": true,
-    "paths": {
-      "cool": ["./api/index.ts"],
-    }
   },
   "exclude": [
     "node_modules",
   ],
   "include": [
-    "./src/**/*",
     "./api/**/*"
   ]
 }

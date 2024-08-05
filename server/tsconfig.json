@@ -1,13 +1,15 @@
 {
   "extends": "../tsconfig.json",
-  "include": [
-    "./**/*",
-  ],
   "compilerOptions": {
+    "baseUrl": "./server",
     "composite": true,
     "outDir": "../dist",
     "paths": {
-      "@/*": ["./server/*"],
+      "@/*": ["./*"],
     }
-  }
+  },
+  "include": [
+    "../server/**/*",
+    "../api/**/*"
+  ]
 }
