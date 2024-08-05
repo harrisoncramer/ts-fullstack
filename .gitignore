@@ -8,6 +8,7 @@ openapi-ts-error*
 
 # Other
 tsconfig.tsbuildinfo
+.eslintcache
 
 # Editor directories and files
 .vscode/*
