@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
-import urls from '@/urls'
 import { GetApiV1UsersResponse } from '@/api'
+import urls from '@/urls'
 
 const router = express.Router()
 

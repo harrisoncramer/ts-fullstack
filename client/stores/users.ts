@@ -1,7 +1,7 @@
+import { GetApiV1UsersResponse, getApiV1Users } from "@/api";
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import { init } from "@/stores/utils"
-import { getApiV1Users, GetApiV1UsersResponse } from "@/api";
+import { ref } from "vue";
 
 export const useUsersStore = defineStore('Users', () => {
   const users = ref<GetApiV1UsersResponse>([])

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "lint": "eslint --cache src server",
+    "lint": "eslint client server",
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
     "start:express": "cd server && DEBUG=true PORT=3001 tsx --watch index.ts",

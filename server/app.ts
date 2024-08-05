@@ -1,7 +1,7 @@
+import debug from "@/middleware/debug"
+import errorMiddleware from "@/middleware/errors"
 import express from "express";
 import openApiValidatorMiddleware from "@/middleware/openapi"
-import errorMiddleware from "@/middleware/errors"
-import debug from "@/middleware/debug";
 import usersRouter from '@/routers/users'
 
 const app = express()

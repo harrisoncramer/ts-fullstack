@@ -1,8 +1,11 @@
-import js from '@eslint/js'
 import eslintPluginVue from 'eslint-plugin-vue'
+import js from '@eslint/js'
 import ts from 'typescript-eslint'
 
 export default ts.config(
+  {
+    ignores: ["**/api/"],
+  },
   js.configs.recommended,
   ...ts.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
@@ -16,6 +19,7 @@ export default ts.config(
   },
   {
     rules: {
+      'sort-imports': 'error',
       'vue/no-v-html': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-undef-components': 'error',
