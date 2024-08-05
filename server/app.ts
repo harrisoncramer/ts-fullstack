@@ -18,6 +18,14 @@ app.use(
   }),
 );
 
+/* Error handler */
+app.use((err: CustomError, _req: Request, res: Response, _next: NextFunction) => {
+  res.status(err.status || 500).json({
+    message: err.message,
+    errors: err.errors,
+  });
+});
+
 app.get(urls.users.list, (_req: Request, res: Response) => {
   res.status(200).send([
     {
@@ -34,12 +42,5 @@ interface CustomError extends Error {
   errors?: any;
 }
 
-/* Error handler */
-app.use((err: CustomError, _req: Request, res: Response, _next: NextFunction) => {
-  res.status(err.status || 500).json({
-    message: err.message,
-    errors: err.errors,
-  });
-});
 
 export default app;
