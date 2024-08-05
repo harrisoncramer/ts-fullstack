@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { GetApiV1UsersResponse } from "@client";
+import { GetApiV1UsersResponse } from "@/client";
 type Props = {
   users: GetApiV1UsersResponse,
 }
