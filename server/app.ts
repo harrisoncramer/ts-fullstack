@@ -1,8 +1,8 @@
 import express from "express";
 import openApiValidatorMiddleware from "@/middleware/openapi"
 import errorMiddleware from "@/middleware/errors"
+import debug from "@/middleware/debug";
 import usersRouter from '@/routers/users'
-import debug from "./middleware/debug";
 
 const app = express()
 if(process.env.DEBUG) app.use(debug)
