@@ -3,6 +3,7 @@ import * as OpenApiValidator from 'express-openapi-validator'
 import path from "path"
 const __dirname = import.meta.dirname
 import urls from '@/urls'
+import { GetApiV1UsersResponse } from '@/api'
 
 const spec = path.join(__dirname, 'api.yaml');
 
@@ -27,12 +28,8 @@ app.use((err: CustomError, _req: Request, res: Response, _next: NextFunction) =>
 });
 
 app.get(urls.users.list, (_req: Request, res: Response) => {
-  res.status(200).send([
-    {
-      first_name: "Harry",
-      last_name: "Cramer",
-    }
-  ]);
+  const data: GetApiV1UsersResponse = [{ first_name: "Harry", last_name: "Cramer" }]
+  res.status(200).send(data);
 });
 
 
