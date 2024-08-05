@@ -6,11 +6,8 @@
     "allowImportingTsExtensions": false,
     "outDir": "../dist-server",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "../server/**/*",
-    "../api/**/*"
-  ]
+  "include": ["../server/**/*"]
 }

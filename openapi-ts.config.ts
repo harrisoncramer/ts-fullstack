@@ -1,5 +1,5 @@
 export default {
   client: '@hey-api/client-axios',
   input: 'server/api.yaml',
-  output: './api',
+  output: './client/api',
 }
