@@ -2,6 +2,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "composite": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
     "outDir": "../dist-server",
     "paths": {
       "@/*": ["./*"],

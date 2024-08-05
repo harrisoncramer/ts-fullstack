@@ -7,9 +7,10 @@
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
     "start:express": "PORT=3001 tsx --watch server/index.ts",
+    "build": "npm run build:api && npm run build:server && npm run build:client",
     "build:api": "openapi-ts",
     "build:client": "vue-tsc -p client/tsconfig.json && vite build",
-    "build:server": "tsc -p server/tsconfig.json",
+    "build:server": "tsc --build server/tsconfig.json",
     "preview": "vite preview"
   },
   "dependencies": {
