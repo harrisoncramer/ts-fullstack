@@ -1,7 +1,7 @@
 import { Pinia } from "pinia"
 import { createMemoryHistory, createRouter as createVueRouter } from 'vue-router'
 
-import Home from './pages/Home.vue'
+import Home from '@/pages/Home.vue'
 
 const routes = [
   { path: '/', component: Home },

@@ -7,7 +7,6 @@ const __dirname = import.meta.dirname
 const SRC = path.join(__dirname, 'src')
 const API = path.join(__dirname, 'api')
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     proxy: {
@@ -23,7 +22,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      api: API,
+      '@api': API,
       '@': SRC,
     }
   }
