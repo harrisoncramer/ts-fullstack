@@ -6,6 +6,9 @@ node_modules
 *.local
 openapi-ts-error*
 
+# Other
+tsconfig.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
