@@ -1,9 +1,8 @@
-# Typescript Full-Stack OpenAPI Template
+# Typescript Full-Stack OpenAPI Template 🚀
 
 This is my full stack Typescript application using Vue and Express.
 
 The project is designed to use OpenAPI to generate a schema for both the client and the server, to keep the APIs in sync, and share types across both sides of the stack.
-
 
 ## Development
 
