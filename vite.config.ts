@@ -7,6 +7,10 @@ const __dirname = import.meta.dirname
 const CLIENT = path.join(__dirname, 'client')
 
 export default defineConfig({
+  build: {
+    outDir: './dist-client',
+    emptyOutDir: true,
+  },
   server: {
     proxy: {
       '/api': {

@@ -8,7 +8,8 @@
     "start:vite": "vite",
     "start:express": "PORT=3001 tsx --watch server/index.ts",
     "build:api": "openapi-ts",
-    "build": "vue-tsc -b && vite build",
+    "build:client": "vue-tsc -p client/tsconfig.json && vite build",
+    "build:server": "tsc -p server/tsconfig.json",
     "preview": "vite preview"
   },
   "dependencies": {
