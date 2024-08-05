@@ -4,13 +4,13 @@ import ts from 'typescript-eslint'
 
 export default ts.config(
   {
-    ignores: ["**/api/"],
+    ignores: ["**/api/"], /* Global ignores */
   },
   js.configs.recommended,
   ...ts.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
   {
-    files: ['*.vue', '**/*.vue'],
+    files: ['*.vue', '**/*.vue', "*.ts"],
     languageOptions: {
       parserOptions: {
         parser: '@typescript-eslint/parser'
@@ -18,6 +18,7 @@ export default ts.config(
     }
   },
   {
+   /* Global rules for all files */
     rules: {
       'sort-imports': 'error',
       'vue/no-v-html': 'off',
