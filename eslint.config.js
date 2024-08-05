@@ -1,13 +1,16 @@
-import js from '@eslint/js'
 import eslintPluginVue from 'eslint-plugin-vue'
+import js from '@eslint/js'
 import ts from 'typescript-eslint'
 
 export default ts.config(
+  {
+    ignores: ["**/api/"], /* Global ignores */
+  },
   js.configs.recommended,
   ...ts.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
   {
-    files: ['*.vue', '**/*.vue'],
+    files: ['*.vue', '**/*.vue', "*.ts"],
     languageOptions: {
       parserOptions: {
         parser: '@typescript-eslint/parser'
@@ -15,7 +18,11 @@ export default ts.config(
     }
   },
   {
+   /* Global rules for all files */
     rules: {
+      semi: ['error', 'never'],
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { max: 1 }],
       'vue/no-v-html': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-undef-components': 'error',

@@ -1,5 +1,5 @@
-import express, { Request, Response } from "express";
-import debug from "./middleware/debug";
+import express, { Request, Response } from "express"
+import debug from "./middleware/debug"
 
 const app = express()
 app.use(express.json())
@@ -11,7 +11,7 @@ app.get('/api/v1/users', (_req: Request, res: Response) => {
       first_name: "Harry",
       last_name: "Cramer",
     }
-  ]);
-});
+  ])
+})
 
-export default app;
+export default app
