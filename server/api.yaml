@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.0 # express-openapi-validator is moving to support 3.1.0 soon, see: https://github.com/cdimascio/express-openapi-validator/pull/882
 info:
   title: Typescript Full Stack OpenAPI Template
   version: 0.0.1

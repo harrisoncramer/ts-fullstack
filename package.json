@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
-    "start:express": "cd server && PORT=3001 tsx --watch index.ts",
+    "start:express": "cd server && DEBUG=true PORT=3001 tsx --watch index.ts",
     "build": "npm run build:api && npm run build:server && npm run build:client",
     "build:api": "openapi-ts && SERVER=true openapi-ts",
     "build:client": "vue-tsc -p client/tsconfig.json && vite build",

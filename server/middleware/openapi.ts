@@ -1,12 +1,12 @@
 import * as OpenApiValidator from 'express-openapi-validator'
-import path from "path"
-const __dirname = import.meta.dirname
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-export default (function () {
-  const spec = path.join(__dirname, '..', 'api.yaml');
-  return OpenApiValidator.middleware({
-    apiSpec: spec,
-    validateRequests: true,
-    validateResponses: true,
-  })
-})()
+const __filename = fileURLToPath(import.meta.url);
+const spec = path.join(path.dirname(__filename), '..', 'api.yaml');
+
+export default OpenApiValidator.middleware({
+  apiSpec: spec,
+  validateRequests: true,
+  validateResponses: true,
+})
