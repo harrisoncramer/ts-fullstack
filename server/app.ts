@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express"
 import * as OpenApiValidator from 'express-openapi-validator'
 import path from "path"
 const __dirname = import.meta.dirname
@@ -27,8 +27,15 @@ app.get(urls.users.list, (_req: Request, res: Response) => {
   ]);
 });
 
+
+
+interface CustomError extends Error {
+  status?: number;
+  errors?: any;
+}
+
 /* Error handler */
-app.use((err, _req, res, _next) => {
+app.use((err: CustomError, _req: Request, res: Response, _next: NextFunction) => {
   res.status(err.status || 500).json({
     message: err.message,
     errors: err.errors,
