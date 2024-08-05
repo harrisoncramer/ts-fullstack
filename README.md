@@ -1,4 +1,4 @@
-# Typescript Full-Stack Template
+# Typescript Full-Stack OpenAPI Template
 
 This is my full stack Typescript application using Vue and Express.
 
