@@ -8,10 +8,10 @@
     }
   ],
   "compilerOptions": {
-    "rootDir": ".",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ESNext",
     "module": "esnext",
+    "rootDir": ".",
     "baseUrl": ".",
     "strict": true,
     "moduleResolution": "bundler",
@@ -25,8 +25,15 @@
     "allowImportingTsExtensions": true,
     "noUncheckedIndexedAccess": true,
     "useDefineForClassFields": true,
+    "paths": {
+      "cool": ["./api/index.ts"],
+    }
   },
   "exclude": [
     "node_modules",
+  ],
+  "include": [
+    "./src/**/*",
+    "./api/**/*"
   ]
 }

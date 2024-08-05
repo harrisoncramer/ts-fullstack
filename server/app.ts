@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import * as OpenApiValidator from 'express-openapi-validator'
 import path from "path"
 const __dirname = import.meta.dirname
-import  urls  from './urls'
+import urls from '@/urls'
 
 const spec = path.join(__dirname, 'api.yaml');
 

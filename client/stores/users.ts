@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { init } from "./utils"
-import { getApiV1Users, GetApiV1UsersResponse } from "@/client";
+import { init } from "@/stores/utils"
+import { getApiV1Users, GetApiV1UsersResponse } from "cool";
 
 export const useUsersStore = defineStore('Users', () => {
   const users = ref<GetApiV1UsersResponse>([])
