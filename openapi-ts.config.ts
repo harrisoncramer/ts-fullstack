@@ -1,4 +1,4 @@
-// We are building this twice so that we can ship the types 
+// We are building this twice so that we can ship the types
 // to both the client and the server!
 
 const OUT = process.env.SERVER ? 'server/api' : 'src/api'

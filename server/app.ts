@@ -1,6 +1,6 @@
 import debug from "@/middleware/debug"
 import errorMiddleware from "@/middleware/errors"
-import express from "express";
+import express from "express"
 import openApiValidatorMiddleware from "@/middleware/openapi"
 import usersRouter from '@/routers/users'
 
@@ -17,4 +17,4 @@ app.use(errorMiddleware)
 /* Routers */
 app.use(usersRouter)
 
-export default app;
+export default app

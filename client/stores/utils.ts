@@ -5,7 +5,6 @@ type CallbackArgs = {
   useCache?: boolean,
 }
 
-
 export function init (cb: (opts?: CallbackArgs) => Promise<void>) {
   const ready = ref(false)
   const running = ref(false)

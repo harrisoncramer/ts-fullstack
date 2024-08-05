@@ -20,7 +20,9 @@ export default ts.config(
   {
    /* Global rules for all files */
     rules: {
-      'sort-imports': 'error',
+      semi: ['error', 'never'],
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { max: 1 }],
       'vue/no-v-html': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-undef-components': 'error',
