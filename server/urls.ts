@@ -1,5 +1,6 @@
 export default {
   users: {
-    list: '/api/v1/users'
+    get: '/api/v1/users',
+    getById: '/api/v1/users/:id',
   }
 }

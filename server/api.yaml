@@ -3,6 +3,34 @@ info:
   title: Typescript Full Stack OpenAPI Template
   version: 0.0.1
 paths:
+  /api/v1/users/{userId}:
+    get:
+      summary: Get a user by their ID
+      parameters:
+      - in: path
+        name: userId
+        schema:
+          type: integer
+        required: true
+        description: Numeric ID of the user
+      responses:
+        '200':
+          description: A JSON object of a single user
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - first_name
+                  - last_name
+                properties:
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  id:
+                    type: number
   /api/v1/users:
     get:
       summary: Returns a list of users.
@@ -16,6 +44,7 @@ paths:
                 items: 
                   type: object
                   required:
+                    - id
                     - first_name
                     - last_name
                   properties:
@@ -23,3 +52,5 @@ paths:
                       type: string
                     last_name:
                       type: string
+                    id:
+                      type: number
