@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { GetApiV1UsersResponse } from "@/api"
+import { User } from "@/api"
 import { useUsersStore } from "@/stores"
 type Props = {
-  users: GetApiV1UsersResponse,
+  users: User[],
 }
 
 const props = withDefaults(defineProps<Props>(), {
