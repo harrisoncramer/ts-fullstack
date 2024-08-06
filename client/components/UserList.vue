@@ -28,7 +28,6 @@ const props = withDefaults(defineProps<Props>(), {
 const usersStore = useUsersStore()
 async function handleGetUser () {
   const randomId = Math.floor(Math.random() * props.users.length)
-  console.log("Id is ", randomId)
   const user = await usersStore.getUserById(randomId)
   alert(`User is: ${user.first_name} ${user.last_name}`)
 }

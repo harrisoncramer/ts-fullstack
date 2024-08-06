@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express"
-import { GetApiV1UsersByUserIdResponse, GetApiV1UsersResponse } from '@/api'
+import { User } from '@/api'
 import urls from '@/urls'
 
 const router = express.Router()
 
-const allUsers = [
+const allUsers: User[] = [
   {
     first_name: "Harry",
     last_name: "Cramer",
@@ -23,13 +23,12 @@ const allUsers = [
 ]
 
 router.get(urls.users.get, (_req: Request, res: Response) => {
-  const data: GetApiV1UsersResponse = allUsers
-  res.status(200).send(data)
+  res.status(200).send(allUsers)
 })
 
 router.get(urls.users.getById, (req: Request, res: Response) => {
   const { id } = req.params
-  const user: GetApiV1UsersByUserIdResponse | undefined = allUsers.find((user) => user.id === Number(id))
+  const user: User | undefined = allUsers.find((user) => user.id === Number(id))
   if(!user) {
     res.status(404).send("User not found")
     return
