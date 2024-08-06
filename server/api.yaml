@@ -1,3 +1,4 @@
+# yaml-language-server: https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json
 openapi: 3.0.0 # express-openapi-validator is moving to support 3.1.0 soon, see: https://github.com/cdimascio/express-openapi-validator/pull/882
 info:
   title: Typescript Full Stack OpenAPI Template
