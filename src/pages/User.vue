@@ -20,6 +20,12 @@
       <span>{{ user?.email }}</span>
       <label>Phone Number</label>
       <span>{{ user?.phoneNumber }}</span>
+      <button
+        class="delete-button"
+        @click="handleDeleteUser"
+      >
+        Delete
+      </button>
     </div>
     <div v-else>
       Invalid ID/No User Found
@@ -52,6 +58,12 @@ const router = useRouter()
 function goBack () {
   router.back()
 }
+
+async function handleDeleteUser () {
+  await usersStore.removeUser({ id })
+  alert("User deleted!")
+  goBack()
+}
 </script>
 <style lang="pcss" scoped>
 .individual-user {
@@ -59,5 +71,8 @@ function goBack () {
 }
 label {
   @apply font-bold text-lg;
+}
+.delete-button {
+  @apply bg-red-400 text-black rounded-sm px-2 py-2 mt-4;
 }
 </style>

@@ -41,7 +41,7 @@ router.post('/api/v1/users', async (req: Request, res: Response) => {
 router.delete('/api/v1/users/:id', async (req: Request, res: Response) => {
   try {
     const db = req.app.get('db')
-    const id = Number(req.params.id)
+    const id = req.params.id
     const users = await db.removeUser({ id })
     res.status(200).send(users)
   } catch (err) {
