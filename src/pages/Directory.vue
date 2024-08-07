@@ -16,6 +16,7 @@
       <tr
         v-for="user in users"
         :key="`${user.id}`"
+        class="user-row"
         @click="goToUser(user.id)"
       >
         <td>
@@ -114,7 +115,10 @@ table {
   }
 }
 
-.nav-button {
-  @apply text-black rounded-sm px-4 mt-2;
+.user-row {
+  @apply cursor-pointer;
+  &:hover {
+    @apply bg-gray-800;
+  }
 }
 </style>

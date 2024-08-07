@@ -7,9 +7,12 @@
       v-if="user"
       class="individual-user"
     >
-      <RouterLink to="/">
+      <button
+        class="nav-button"
+        @click="goBack"
+      >
         Back
-      </RouterLink>
+      </button>
       <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
       <label>Company</label>
       <span>{{ user?.company }}</span>
@@ -27,8 +30,7 @@
 import { useUsersStore } from "@/stores"
 import { User } from "@/types"
 import { onMounted, ref } from "vue"
-import { RouterLink } from "vue-router"
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Loading from "@/components/Loading.vue"
 
 const usersStore = useUsersStore()
@@ -45,10 +47,15 @@ onMounted(async() => {
     error.value = err as Error
   }
 })
+
+const router = useRouter()
+function goBack () {
+  router.back()
+}
 </script>
 <style lang="pcss" scoped>
 .individual-user {
-  @apply flex flex-col;
+  @apply flex flex-col items-start;
 }
 label {
   @apply font-bold text-lg;

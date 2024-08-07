@@ -33,3 +33,10 @@ p {
   padding: 0px;
   margin: 0px;
 }
+
+.nav-button {
+  @apply text-black rounded-sm px-4 mt-2;
+  &:not(:disabled) {
+   @apply bg-white;
+  }
+}

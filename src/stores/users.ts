@@ -26,6 +26,8 @@ export const useUsersStore = defineStore('Users', () => {
   })
 
   async function getUserById({ id }: { id: string }): Promise<User> {
+    const user = users.value.find((user) => user.id === id)
+    if(user) return user // User may be available locally, if not, fetch them from the DB
     const { data } = await axios.get(`/api/v1/users/${id}`)
     return data
   }
