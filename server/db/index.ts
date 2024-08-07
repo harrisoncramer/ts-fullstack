@@ -45,4 +45,14 @@ export default class Db {
     this.users.push(newUser)
     return newUser
   }
+
+  async removeUser ({ id }: { id: number }) {
+    const i = this.users.findIndex((user) => user.id === id)
+    if(i === -1) {
+      throw new Error("Could not find user")
+    }
+    const user = this.users[i]
+    this.users.splice(i, 1)
+    return user
+  }
 }

@@ -25,6 +25,11 @@ export const useUsersStore = defineStore('Users', () => {
     refresh()
   }
 
+  async function removeUser ({ id }: { id: number }) {
+    await axios.delete(`/api/v1/users/${id}`)
+    refresh()
+  }
+
   return {
     users,
     error,
@@ -32,5 +37,6 @@ export const useUsersStore = defineStore('Users', () => {
     readySync,
     refresh,
     addUser,
+    removeUser,
   }
 })
