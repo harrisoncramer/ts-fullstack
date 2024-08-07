@@ -1,8 +1,8 @@
 import { defineStore } from "pinia"
 import { ref } from "vue"
 import axios from 'axios'
-import { init } from "./utils"
-import urls from "../urls"
+import { init } from "@/stores/utils"
+import urls from "@/urls"
 
 export type User = {
   first_name: string,
