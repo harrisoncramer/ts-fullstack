@@ -7,7 +7,7 @@
     "lint": "eslint --cache src server",
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
-    "start:express": "PORT=3001 DEBUG=true tsx --watch server/index.ts",
+    "start:express": "cd server && DEBUG=true PORT=3001 tsx --watch index.ts",
     "build": "npm run build:server && npm run build:client",
     "build:client": "vue-tsc -p src/tsconfig.json && vite build",
     "build:server": "tsc --build server/tsconfig.json",
