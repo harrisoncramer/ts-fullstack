@@ -7,7 +7,7 @@ import UserView from '@/pages/User.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'directory',
     component: Directory,
   },
   {

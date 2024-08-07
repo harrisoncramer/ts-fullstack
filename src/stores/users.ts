@@ -1,33 +1,45 @@
 import { defineStore } from "pinia"
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import axios from 'axios'
 import { init } from "@/stores/utils"
 import urls from "@/urls"
-
-export type User = {
-  first_name: string,
-  last_name: string,
-  id: number,
-}
+import { User } from '@/types'
+import usePagination from "@/composables/usePagination"
 
 export const useUsersStore = defineStore('Users', () => {
-  const users = ref<User[]>([])
+  const users = ref<User[]>([]) // A slice of the users data, used for the table.
+  const hasMoreUsers = ref(true)
 
+  const { limit, page } = usePagination()
   const { error, ready, readySync, refresh } = init(async () => {
-    const { data } = await axios.get(urls.users.list)
-    users.value = data
+    const url = `${urls.users.list}?page=${page.value}&limit=${limit.value}`
+    const { data } = await axios.get(url)
+    users.value = data.users
+    hasMoreUsers.value = data.meta.hasMore
   })
 
   refresh({ useCache: true })
 
-  async function addUser (data: { firstName: string, lastName: string }) {
-    await axios.post('/api/v1/users', data)
+  /* When query parameters change for limit or page, update the locally cached data */
+  watch([limit, page], () => {
     refresh()
+  })
+
+  async function getUserById({ id }: { id: string }): Promise<User> {
+    const { data } = await axios.get(`/api/v1/users/${id}`)
+    return data
   }
 
-  async function removeUser ({ id }: { id: number }) {
-    await axios.delete(`/api/v1/users/${id}`)
+  async function addUser (newUser: Omit<User, 'id'>): Promise<User> {
+    const { data } = await axios.post('/api/v1/users', newUser)
     refresh()
+    return data
+  }
+
+  async function removeUser ({ id }: { id: string }): Promise<User> {
+    const { data } = await axios.delete(`/api/v1/users/${id}`)
+    refresh()
+    return data
   }
 
   return {
@@ -38,5 +50,7 @@ export const useUsersStore = defineStore('Users', () => {
     refresh,
     addUser,
     removeUser,
+    getUserById,
+    hasMoreUsers,
   }
 })

@@ -1,4 +1,4 @@
-type Person = {
+export type User = {
   id: string,
   firstName: string,
   lastName: string,
@@ -7,7 +7,7 @@ type Person = {
   company: string,
 }
 
-const data: Person[] = [
+const data: User[] = [
   {
     id: "fa49eed6-e6cd-4fe3-8f55-795433356527",
     firstName: "Amanda",
