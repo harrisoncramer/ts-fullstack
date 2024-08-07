@@ -11,7 +11,7 @@ export const useUsersStore = defineStore('Users', () => {
   const hasMoreUsers = ref(true)
 
   const { limit, page } = usePagination()
-  const { error, ready, readySync, refresh } = init(async () => {
+  const { error, ready, readySync, refresh, loading } = init(async () => {
     const url = `${urls.users.list}?page=${page.value}&limit=${limit.value}`
     const { data } = await axios.get(url)
     users.value = data.users
@@ -46,6 +46,7 @@ export const useUsersStore = defineStore('Users', () => {
     users,
     error,
     ready,
+    loading,
     readySync,
     refresh,
     addUser,

@@ -12,12 +12,12 @@ type ErrorJson = {
 
 export function init (cb: (opts?: CallbackArgs) => Promise<void>) {
   const ready = ref(false)
-  const running = ref(false)
+  const loading = ref(false)
   const error = ref<Error | null>(null)
   const readySync = ref<ReadySync>(null)
 
   async function _getData (opts?: CallbackArgs): Promise<void> {
-    running.value = true
+    loading.value = true
     try {
       await cb(opts)
     } catch (e) {
@@ -29,13 +29,13 @@ export function init (cb: (opts?: CallbackArgs) => Promise<void>) {
         error.value = err
       }
     } finally {
-      running.value = false
+      loading.value = false
       ready.value = true
     }
   }
 
   function refresh (opts: CallbackArgs = { useCache: false }) {
-    if (opts.useCache && (ready.value || running.value)) return readySync.value /* Initializing store, used cached data if available */
+    if (opts.useCache && (ready.value || loading.value)) return readySync.value /* Initializing store, used cached data if available */
     readySync.value = _getData(opts)
     return readySync.value
   }
@@ -43,6 +43,7 @@ export function init (cb: (opts?: CallbackArgs) => Promise<void>) {
   return {
     error,
     ready,
+    loading,
     readySync,
     refresh,
   }

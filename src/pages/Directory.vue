@@ -1,6 +1,6 @@
 <template>
   <Loading
-    :loading="!ready"
+    :loading="loading"
     :error="error"
   >
     <table>
@@ -18,42 +18,46 @@
         :key="`${user.id}`"
         @click="goToUser(user.id)"
       >
-        <th>
+        <td>
           {{ user.firstName }}
-        </th>
-        <th>
+        </td>
+        <td>
           {{ user.lastName }}
-        </th>
-        <th>
+        </td>
+        <td>
           {{ user.email }}
-        </th>
-        <th>
+        </td>
+        <td>
           {{ user.phoneNumber }}
-        </th>
-        <th>
+        </td>
+        <td>
           {{ user.company }}
-        </th>
+        </td>
       </tr>
     </table>
-    <button
-      :disabled="backDisabled"
-      :class="{
-        'text-gray-500': backDisabled,
-      }"
-      @click="handlePrevious"
-    >
-      Previous
-    </button>
-    <button
-      :disabled="!hasMoreUsers"
-      :class="{
-        'text-gray-500': !hasMoreUsers,
-      }"
-      @click="handleNext"
-    >
-      Next
-    </button>
   </Loading>
+  <button
+    :disabled="backDisabled"
+    class="nav-button mr-2"
+    :class="{
+      'bg-gray-300 cursor-not-allowed': backDisabled,
+      'bg-white': !backDisabled,
+    }"
+    @click="handlePrevious"
+  >
+    Previous
+  </button>
+  <button
+    :disabled="!hasMoreUsers"
+    class="nav-button"
+    :class="{
+      'bg-gray-300 cursor-not-allowed': !hasMoreUsers,
+      'bg-white': hasMoreUsers,
+    }"
+    @click="handleNext"
+  >
+    Next
+  </button>
 </template>
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -65,7 +69,7 @@ import usePagination from '@/composables/usePagination'
 
 const router = useRouter()
 const usersStore = useUsersStore()
-const { ready, error, users, hasMoreUsers } = storeToRefs(usersStore)
+const { loading, error, users, hasMoreUsers } = storeToRefs(usersStore)
 
 const { limit, page } = usePagination()
 const backDisabled = computed(() => page.value === 1)
@@ -100,4 +104,17 @@ async function goToUser (id: string)  {
 
 </script>
 <style lang="pcss">
+table {
+  @apply border border-white text-left;
+  th {
+    @apply border;
+  }
+  td {
+    @apply px-2 py-1 border border-white;
+  }
+}
+
+.nav-button {
+  @apply text-black rounded-sm px-4 mt-2;
+}
 </style>
