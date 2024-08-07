@@ -13,11 +13,11 @@ export default class db {
       console.log("Connecting to fake DB...")
       setTimeout(() => {
         resolve()
-      }, 2000)
+      }, 500)
     })
   }
 
-  getUsers (): User[] {
+  async getUsers (): Promise<User[]> {
     return [
       {
         first_name: "Harry",

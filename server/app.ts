@@ -1,17 +1,14 @@
-import express, { Request, Response } from "express"
+import express from "express"
 import debug from "@/middleware/debug"
-import db from "@/middleware/debug"
+import db from "@/db"
+import usersRouter from "@/routers/users"
 
 const app = express()
 app.use(express.json())
-if(process.env.DEBUG) app.use(debug)
-app.use(db)
-
 app.set("db", db)
+if(process.env.DEBUG) app.use(debug)
 
-/* Routes */
-app.get('/api/v1/users', (_req: Request, res: Response) => {
-  res.status(200).send()
-})
+/* Routers */
+app.use(usersRouter)
 
 export default app
