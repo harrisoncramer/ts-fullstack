@@ -35,29 +35,29 @@
         </td>
       </tr>
     </table>
+    <button
+      :disabled="backDisabled"
+      class="nav-button mr-2"
+      :class="{
+        'bg-gray-300 cursor-not-allowed': backDisabled,
+        'bg-white': !backDisabled,
+      }"
+      @click="handlePrevious"
+    >
+      Previous
+    </button>
+    <button
+      :disabled="!hasMoreUsers"
+      class="nav-button"
+      :class="{
+        'bg-gray-300 cursor-not-allowed': !hasMoreUsers,
+        'bg-white': hasMoreUsers,
+      }"
+      @click="handleNext"
+    >
+      Next
+    </button>
   </Loading>
-  <button
-    :disabled="backDisabled"
-    class="nav-button mr-2"
-    :class="{
-      'bg-gray-300 cursor-not-allowed': backDisabled,
-      'bg-white': !backDisabled,
-    }"
-    @click="handlePrevious"
-  >
-    Previous
-  </button>
-  <button
-    :disabled="!hasMoreUsers"
-    class="nav-button"
-    :class="{
-      'bg-gray-300 cursor-not-allowed': !hasMoreUsers,
-      'bg-white': hasMoreUsers,
-    }"
-    @click="handleNext"
-  >
-    Next
-  </button>
 </template>
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -107,7 +107,7 @@ async function goToUser (id: string)  {
 table {
   @apply border border-white text-left;
   th {
-    @apply border;
+    @apply border px-2;
   }
   td {
     @apply px-2 py-1 border border-white;

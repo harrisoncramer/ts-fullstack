@@ -6,7 +6,9 @@
     >
       {{ error }}
     </div>
-    <div v-else-if="loading">
+    <div
+      v-else-if="loading"
+    >
       Loading...
     </div>
     <div v-else>
