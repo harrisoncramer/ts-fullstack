@@ -7,6 +7,7 @@ import urls from "@/urls"
 export type User = {
   first_name: string,
   last_name: string,
+  id: number,
 }
 
 export const useUsersStore = defineStore('Users', () => {
@@ -19,11 +20,17 @@ export const useUsersStore = defineStore('Users', () => {
 
   refresh({ useCache: true })
 
+  async function addUser (data: { firstName: string, lastName: string }) {
+    await axios.post('/api/v1/users', data)
+    refresh()
+  }
+
   return {
     users,
     error,
     ready,
     readySync,
     refresh,
+    addUser,
   }
 })
