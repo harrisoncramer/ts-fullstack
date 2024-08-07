@@ -3,7 +3,7 @@ type User = {
   last_name: string,
 }
 
-export default class db {
+export default class Db {
   constructor () {
 
   }
