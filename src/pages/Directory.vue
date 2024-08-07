@@ -2,6 +2,7 @@
   <Loading
     :loading="loading"
     :error="error"
+    class="m-4"
   >
     <table>
       <thead>
