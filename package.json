@@ -8,7 +8,9 @@
     "start": "concurrently \"npm run start:vite\" \"npm run start:express\"",
     "start:vite": "vite",
     "start:express": "PORT=3001 DEBUG=true tsx --watch server/index.ts",
-    "build": "vue-tsc -b && vite build",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "vue-tsc -p src/tsconfig.json && vite build",
+    "build:server": "tsc --build server/tsconfig.json",
     "preview": "vite preview"
   },
   "dependencies": {
