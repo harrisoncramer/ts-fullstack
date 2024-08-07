@@ -1,19 +1,9 @@
 <template>
-  <Loading
-    :loading="!ready"
-    :error="error"
-  >
-    <UsersList :users="users" />
-    <NewUserForm />
-  </Loading>
+  <h1>Hello World!</h1>
+  <RouterLink to="/users">
+    Users Page
+  </RouterLink>
 </template>
-
-<script setup lang="ts">
-import { useUsersStore } from '@/stores'
-import UsersList from '@/components/UserList.vue'
-import NewUserForm from '@/components/NewUserForm.vue'
-import Loading from '@/components/Loading.vue'
-import { storeToRefs } from 'pinia'
-const usersStore = useUsersStore()
-const { ready, error, users } = storeToRefs(usersStore)
+<script setup>
+import { RouterLink } from 'vue-router'
 </script>

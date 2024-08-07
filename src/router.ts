@@ -1,15 +1,25 @@
 import { Pinia } from "pinia"
-import { createMemoryHistory, createRouter as createVueRouter } from 'vue-router'
+import { createWebHistory, createRouter as createVueRouter } from 'vue-router'
 
-import Home from './pages/Home.vue'
+import Home from '@/pages/Home.vue'
+import UsersView from '@/pages/Users.vue'
 
 const routes = [
-  { path: '/', component: Home },
+  {
+    path: '/',
+    name: 'home',
+    component: Home,
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: UsersView,
+  },
 ]
 
 export function createRouter (_store: Pinia) {
   return createVueRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
   })
 }

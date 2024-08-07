@@ -1,13 +1,6 @@
 <template>
   <div class="app">
-    <RouterView v-slot="{ Component }">
-      <transition name="fade">
-        <component
-          :is="Component"
-          transition
-        />
-      </transition>
-    </RouterView>
+    <RouterView />
   </div>
 </template>
 <script setup lang="ts">
