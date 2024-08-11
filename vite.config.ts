@@ -25,5 +25,9 @@ export default defineConfig({
       '@': SRC,
       '@shared': SHARED,
     }
+  },
+  build: {
+    outDir: './dist-client',
+    emptyOutDir: true
   }
 })

@@ -3,6 +3,8 @@
   "types": ["vite/client"],
   "compilerOptions": {
     "composite": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
     "outDir": "../dist-client",
     "baseUrl": ".",
     "paths": {
