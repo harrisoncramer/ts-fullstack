@@ -43,8 +43,12 @@ router.get('/api/v1/users/:id', validateUserId, async (req: RequestWithId, res: 
 router.post('/api/v1/users', async (req: Request, res: Response) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
-    const users = await userController.addUser(req.body)
-    res.status(200).send(users)
+    const user = await userController.addUser(req.body)
+    if(!user) {
+      res.status(400)
+      return handleError(new Error("Could not create user"), res)
+    }
+    res.status(200).send(user)
   } catch (err) {
     handleError(err, res)
   }

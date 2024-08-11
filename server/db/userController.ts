@@ -10,7 +10,7 @@ type Meta = {
 export interface UserControllerType {
   getUsers(pagination: Pagination): Promise<{users: User[], meta: Meta}>
   getUserById({ id }: { id: string }): Promise<User | undefined>
-  addUser(newUser: Omit<User, 'id'>): Promise<User>
+  addUser(newUser: Omit<User, 'id'>): Promise<User | undefined>
   removeUser({ id }: { id: string }): Promise<User | undefined>
 }
 
