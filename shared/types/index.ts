@@ -6,3 +6,8 @@ export type User = {
   phoneNumber: string,
   company: string,
 }
+
+export type Pagination = {
+  page: number,
+  limit: number,
+}
