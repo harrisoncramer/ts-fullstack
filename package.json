@@ -10,7 +10,7 @@
     "start:express": "cd server && DEBUG=true PORT=3001 tsx --watch index.ts",
     "build": "npm run build:server && npm run build:client",
     "build:client": "vue-tsc -p src/tsconfig.json && vite build",
-    "build:server": "tsc --build server/tsconfig.json",
+    "build:server": "tsc --build server/tsconfig.json && tsc-alias -p server/tsconfig.json",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "eslint-plugin-vue": "^9.27.0",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.16.5",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.0.0",

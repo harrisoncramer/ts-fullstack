@@ -9,7 +9,11 @@
     "paths": {
       "@/*": ["./*"],
       "@shared/*": ["../shared/*"]
-    }
+    },
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
   },
   "include": [
     "../server/**/*",
