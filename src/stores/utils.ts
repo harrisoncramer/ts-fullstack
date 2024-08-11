@@ -1,5 +1,7 @@
-import { ref } from "vue"
 import { AxiosError, AxiosResponse } from "axios"
+import { ref } from "vue"
+
+import { isAxiosError } from "@/types"
 
 type ReadySync = Promise<void> | null
 type CallbackArgs = {
@@ -47,8 +49,4 @@ export function init (cb: (opts?: CallbackArgs) => Promise<void>) {
     readySync,
     refresh,
   }
-}
-
-function isAxiosError(error: any): error is AxiosError {
-  return (error as AxiosError).isAxiosError !== undefined
 }

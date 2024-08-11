@@ -2,13 +2,11 @@
   <div class="c-loading">
     <div
       v-if="error && !loading"
-      class="text-red-400"
+      class="loading-error"
     >
-      {{ error }}
+      {{ msg }}
     </div>
-    <div
-      v-else-if="loading"
-    >
+    <div v-else-if="loading">
       Loading...
     </div>
     <div v-else>
@@ -18,13 +16,28 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
+import { isAxiosError } from '@/types'
+
 type Props = {
   loading: boolean,
   error?: any | null,
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   loading: false,
   error: null,
 })
+
+const msg = computed(() => {
+  console.log(props.error)
+  const axiosMsg = props.error.response?.data?.error || 'Unknown network error occurred'
+  return isAxiosError(props.error) ? axiosMsg : props.error
+})
 </script>
+<style lang="pcss" scoped>
+.loading-error {
+  @apply text-red-400;
+}
+</style>

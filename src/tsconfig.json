@@ -9,12 +9,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@shared/types": ["../shared/types/index.ts"]
+      "shared/*": ["../shared/*"]
     }
   },
   "include": [
     "../src/**/*",
-    "../server/data.ts",
-    "../shared/**/*"
+    "../shared/**/*",
+    "../vite.config.ts"
   ]
 }

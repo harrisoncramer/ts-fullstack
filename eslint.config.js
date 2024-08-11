@@ -1,14 +1,30 @@
-import eslintPluginVue from 'eslint-plugin-vue'
 import js from '@eslint/js'
+import simpleImportSort from "eslint-plugin-simple-import-sort"
+import eslintPluginVue from 'eslint-plugin-vue'
+import globals from 'globals'
 import ts from 'typescript-eslint'
 
 export default ts.config(
-  {
-    ignores: ["**/api/"], /* Global ignores */
-  },
   js.configs.recommended,
   ...ts.configs.recommended,
   ...eslintPluginVue.configs['flat/recommended'],
+  {
+    files: ['server/**/*.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      }
+    }
+  },
+  {
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    },
+    rules: {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+    }
+  },
   {
     files: ['*.vue', '**/*.vue', "*.ts"],
     languageOptions: {

@@ -1,25 +1,25 @@
 import { Pinia } from "pinia"
-import { createWebHistory, createRouter as createVueRouter } from 'vue-router'
+import { createRouter as createVueRouter, createWebHistory } from 'vue-router'
 
 import Directory from '@/pages/Directory.vue'
+import HomeView from '@/pages/Home.vue'
 import UserView from '@/pages/User.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'home',
+    component: HomeView,
+  },
+  {
+    path: '/users',
     name: 'directory',
     component: Directory,
   },
   {
-    path: '/users',
-    name: 'users',
-    children: [
-      {
-        path: '/users/:id',
-        name: 'individual-user',
-        component: UserView,
-      }
-    ]
+    path: '/users/:id',
+    name: 'individual-user',
+    component: UserView,
   },
 ]
 

@@ -62,12 +62,13 @@
   </Loading>
 </template>
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import Loading from '@/components/Loading.vue'
-import { useUsersStore } from '@/stores/users'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+import Loading from '@/components/Loading.vue'
 import usePagination from '@/composables/usePagination'
+import { useUsersStore } from '@/stores/users'
 
 const router = useRouter()
 const usersStore = useUsersStore()

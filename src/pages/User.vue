@@ -4,10 +4,7 @@
     :error="error"
     class="m-4"
   >
-    <div
-      v-if="user"
-      class="individual-user"
-    >
+    <div class="individual-user">
       <button
         class="nav-button"
         @click="goBack"
@@ -28,17 +25,15 @@
         Delete
       </button>
     </div>
-    <div v-else>
-      Invalid ID/No User Found
-    </div>
   </Loading>
 </template>
 <script setup lang="ts">
-import { useUsersStore } from "@/stores"
-import { User } from "@shared/types"
+import { User } from "shared/types"
 import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from 'vue-router'
+
 import Loading from "@/components/Loading.vue"
+import { useUsersStore } from "@/stores"
 
 const usersStore = useUsersStore()
 const route = useRoute()
@@ -51,6 +46,7 @@ onMounted(async() => {
     user.value = await usersStore.getUserById({ id })
     loading.value = false
   } catch (err) {
+    loading.value = false
     error.value = err as Error
   }
 })

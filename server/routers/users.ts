@@ -1,5 +1,7 @@
+import express, { NextFunction, Request, Response } from "express"
+import urls from 'shared/urls'
+
 import { UserControllerType } from "@/db/userController"
-import express, { Request, Response } from "express"
 import validateUserId, { RequestWithId } from '@/middleware/validateUserId'
 
 const router = express.Router()
@@ -7,7 +9,7 @@ const router = express.Router()
 const LIMIT = 20
 const PAGE = 1
 
-router.get('/api/v1/users', async (req: Request, res: Response) => {
+router.get(urls.users.base, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
     const page = Number(req.query.page) || PAGE
@@ -21,61 +23,52 @@ router.get('/api/v1/users', async (req: Request, res: Response) => {
     const response = await userController.getUsers({ page, limit })
     res.status(200).send(response)
   } catch (err) {
-    handleError(err, res)
+    next(err)
   }
 })
 
-router.get('/api/v1/users/:id', validateUserId, async (req: RequestWithId, res: Response) => {
+router.get(urls.users.byId, validateUserId, async (req: RequestWithId, res: Response, next: NextFunction) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
     const id = req.params.id
     const user = await userController.getUserById({ id })
     if(!user) {
-      res.status(400)
-      return handleError(new Error("Could not find user"), res)
+      res.status(404).send({ error: "Could not find user" })
+      return
     }
     res.status(200).send(user)
   } catch (err) {
-    handleError(err, res)
+    next(err)
   }
 })
 
-router.post('/api/v1/users', async (req: Request, res: Response) => {
+router.post(urls.users.base, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
     const user = await userController.addUser(req.body)
     if(!user) {
-      res.status(400)
-      return handleError(new Error("Could not create user"), res)
+      res.status(400).send({ error: "Could not create user" })
+      return
     }
     res.status(200).send(user)
   } catch (err) {
-    handleError(err, res)
+    next(err)
   }
 })
 
-router.delete('/api/v1/users/:id', validateUserId, async (req: RequestWithId, res: Response) => {
+router.delete(urls.users.byId, validateUserId, async (req: RequestWithId, res: Response, next: NextFunction) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
     const id = req.params.id
     const user = await userController.getUserById({ id })
     if(!user) {
-      res.status(400)
-      return handleError(new Error("Could not find user"), res)
+      res.status(404).send({ error: "Could not find user" })
+      return
     }
     res.status(200).send(user)
   } catch (err) {
-    handleError(err, res.status(400))
+    next(err)
   }
 })
-
-function handleError (err: any, res: Response) {
-  const e = err as Error
-  if(res.statusCode) {
-    res.json({ error: e.message })
-  } else {
-    res.status(500).json({ error: e.message })
-  }
-}
 
 export default router

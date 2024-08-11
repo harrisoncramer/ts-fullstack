@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express"
+import { NextFunction, Request, Response } from "express"
 
 export default function (req: Request, _: Response, next: NextFunction) {
   console.log("\n\n")

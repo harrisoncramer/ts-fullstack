@@ -3,7 +3,8 @@
   <RouterLink to="/users">
     Users Page
   </RouterLink>
+  <RouterView />
 </template>
-<script setup>
-import { RouterLink } from 'vue-router'
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
 </script>
