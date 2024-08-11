@@ -4,10 +4,12 @@ import UserController from "@/db/userController"
 
 const PORT = process.env.PORT || 3001
 
+/* Initialize the database connection */
 const db = new Db()
 await db.init()
-const userController = new UserController(db)
 
+/* Set up controllers, w/ dependency injection */
+const userController = new UserController(db)
 app.set('userController', userController)
 
 app.listen(PORT, () => {
