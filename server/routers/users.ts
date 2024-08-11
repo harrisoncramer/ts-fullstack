@@ -10,7 +10,13 @@ router.get('/api/v1/users', async (req: Request, res: Response) => {
   const page = req.query.page || PAGE
   const limit = req.query.limit || LIMIT
   try {
-    const users = await db.getUsers({ page, limit }) // This would in actuality be done via a controller rather than directly in the handler
+    /* This would in actuality be done via a controller rather than directly in the handler
+    SELECT field_1, field_2 FROM users
+    ORDER BY column_name
+    LIMIT 100 OFFSET 100;
+    If this is too slow for large datasets, and we want random page access, consider keyset pagination instead.
+    */
+    const users = await db.getUsers({ page, limit })
     res.status(200).send(users)
   } catch (err) {
     handleError(err, res)
