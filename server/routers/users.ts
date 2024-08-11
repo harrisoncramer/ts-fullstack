@@ -1,5 +1,6 @@
 import { UserControllerType } from "@/db/userController"
 import express, { Request, Response } from "express"
+import validateUserId, { RequestWithId } from '@/middleware/validateUserId'
 
 const router = express.Router()
 
@@ -7,10 +8,10 @@ const LIMIT = 20
 const PAGE = 1
 
 router.get('/api/v1/users', async (req: Request, res: Response) => {
-  const userController: UserControllerType = req.app.get('userController')
-  const page = Number(req.query.page) || PAGE
-  const limit = Number(req.query.limit) || LIMIT
   try {
+    const userController: UserControllerType = req.app.get('userController')
+    const page = Number(req.query.page) || PAGE
+    const limit = Number(req.query.limit) || LIMIT
     /* This would in actuality be done via a controller rather than directly in the handler
     SELECT field_1, field_2 FROM users
     ORDER BY column_name
@@ -24,14 +25,10 @@ router.get('/api/v1/users', async (req: Request, res: Response) => {
   }
 })
 
-router.get('/api/v1/users/:id', async (req: Request, res: Response) => {
-  const userController: UserControllerType = req.app.get('userController')
-  const id = req.params.id
-  if(!id) {
-    res.status(400)
-    return handleError(new Error("Must provide ID"), res)
-  }
+router.get('/api/v1/users/:id', validateUserId, async (req: RequestWithId, res: Response) => {
   try {
+    const userController: UserControllerType = req.app.get('userController')
+    const id = req.params.id
     const user = await userController.getUserById({ id })
     if(!user) {
       res.status(400)
@@ -53,16 +50,16 @@ router.post('/api/v1/users', async (req: Request, res: Response) => {
   }
 })
 
-router.delete('/api/v1/users/:id', async (req: Request, res: Response) => {
+router.delete('/api/v1/users/:id', validateUserId, async (req: RequestWithId, res: Response) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
     const id = req.params.id
-    if(!id) {
+    const user = await userController.getUserById({ id })
+    if(!user) {
       res.status(400)
-      return handleError(new Error("Must provide ID"), res)
+      return handleError(new Error("Could not find user"), res)
     }
-    const users = await userController.removeUser({ id })
-    res.status(200).send(users)
+    res.status(200).send(user)
   } catch (err) {
     handleError(err, res.status(400))
   }
