@@ -35,7 +35,7 @@
 </template>
 <script setup lang="ts">
 import { useUsersStore } from "@/stores"
-import { User } from "@/types"
+import { User } from "@shared/types"
 import { onMounted, ref } from "vue"
 import { useRoute, useRouter } from 'vue-router'
 import Loading from "@/components/Loading.vue"

@@ -1,11 +1,4 @@
-export type User = {
-  id: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  phoneNumber: string,
-  company: string,
-}
+import { User } from '@shared/types'
 
 const data: User[] = [
   {

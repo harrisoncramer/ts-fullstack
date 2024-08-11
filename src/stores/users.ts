@@ -3,7 +3,7 @@ import { ref, watch } from "vue"
 import axios from 'axios'
 import { init } from "@/stores/utils"
 import urls from "@/urls"
-import { User } from '@/types'
+import { User } from '@shared/types'
 import usePagination from "@/composables/usePagination"
 
 export const useUsersStore = defineStore('Users', () => {

@@ -4,9 +4,15 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "../dist-client",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@shared/types": ["../shared/types/index.ts"]
     }
   },
-  "include": ["../src/**/*", "../server/data.ts"]
+  "include": [
+    "../src/**/*",
+    "../server/data.ts",
+    "../shared/**/*"
+  ]
 }

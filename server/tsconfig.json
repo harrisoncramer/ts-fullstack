@@ -5,9 +5,14 @@
     "noEmit": false,
     "allowImportingTsExtensions": false,
     "outDir": "../dist-server",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@shared/*": ["../shared/*"]
     }
   },
-  "include": ["../server/**/*"]
+  "include": [
+    "../server/**/*",
+    "../shared/**/*"
+  ]
 }

@@ -24,7 +24,9 @@
     "noUncheckedIndexedAccess": true,
     "useDefineForClassFields": true,
   },
-  "include": [],
+  "include": [
+    "shared",
+  ],
   "exclude": [
     "node_modules",
     "dist-client",

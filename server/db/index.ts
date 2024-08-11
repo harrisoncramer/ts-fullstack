@@ -1,4 +1,5 @@
-import users, { User } from '@/data/users'
+import users from '@/data/users'
+import { User } from '@shared/types'
 import crypto from "crypto"
 
 type Pagination = {
