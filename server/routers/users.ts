@@ -6,14 +6,14 @@ import validateUserId, { RequestWithId } from '@/middleware/validateUserId'
 
 const router = express.Router()
 
-const LIMIT = 20
-const PAGE = 1
+export const DEFAULT_LIMIT = 20
+export const DEFAULT_PAGE = 1
 
 router.get(urls.users.base, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userController: UserControllerType = req.app.get('userController')
-    const page = Number(req.query.page) || PAGE
-    const limit = Number(req.query.limit) || LIMIT
+    const page = Number(req.query.page) || DEFAULT_PAGE
+    const limit = Number(req.query.limit) || DEFAULT_LIMIT
     /* This would in actuality be done via a controller rather than directly in the handler
     SELECT field_1, field_2 FROM users
     ORDER BY column_name
